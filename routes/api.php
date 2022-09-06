@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['api'])->group(function () {
+    Route::get('/auth/redirect', 'App\Http\Controllers\AuthController@redirect');
+ 
+    Route::get('/auth/callback', 'App\Http\Controllers\AuthController@callback');
 });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Route::get('/auth/redirect', 'App\Http\Controllers\AuthController@redirect');
+ 
+// Route::get('/auth/callback', 'App\Http\Controllers\AuthController@callback');
